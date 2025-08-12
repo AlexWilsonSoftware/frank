@@ -8,3 +8,27 @@ export async function GET(req: Request) {
 
     return NextResponse.json(articles)
 }
+
+export async function POST(req: Request) {
+    try {
+        const { user_id, title, description, url, timestamp } = await req.json();
+
+        if (!user_id || !title || !url || !timestamp) {
+            return NextResponse.json(
+                { error: "Missing required fields" },
+                { status: 400 }
+            );
+        }
+
+        const result = await sql`
+      INSERT INTO article (user_id, title, description, url, timestamp)
+      VALUES (${user_id}, ${title}, ${description}, ${url}, ${timestamp})
+      RETURNING *
+    `;
+
+        return NextResponse.json(result[0], { status: 201 });
+    } catch (error) {
+        console.error("Error inserting article:", error);
+        return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    }
+}

@@ -8,12 +8,9 @@ type ArticleCardProps = {
 export function ArticleCard({article}: ArticleCardProps) {
 
     return (
-        <Card>
+        <Card className="w-full">
             <CardHeader>
                 <CardTitle>{article.title}</CardTitle>
-                <CardDescription>
-                    {article.description}
-                </CardDescription>
                 <CardDate>
                     {new Date(article.timestamp).toLocaleDateString("en-GB", {
                         day: "2-digit",
@@ -24,7 +21,9 @@ export function ArticleCard({article}: ArticleCardProps) {
             </CardHeader>
 
             <CardContent>
-
+                <CardDescription>
+                    {article.description}
+                </CardDescription>
             </CardContent>
             <CardFooter className="flex-col gap-2 underline">
                 <a className="cursor-pointer" href={article.url} target="_blank">
