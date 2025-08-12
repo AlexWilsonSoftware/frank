@@ -41,4 +41,12 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 - [x] Scaffold basic ui with mock data
 - [x] Actually setup a database
 - [x] Attach db to ui
-- [ ] Add auth
+- [x] Add auth
+- [x] light mode/dark mode
+- [ ] generate wiki article
+- [ ] improve article card
+- [ ] email wiki article
+- [ ] automate email
+- [ ] delete entry
+- [ ] change genre of wiki article
+- [ ] filter by genre

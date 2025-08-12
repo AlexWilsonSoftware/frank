@@ -5,6 +5,7 @@ import {article} from "@/type/article";
 import {useEffect, useState} from "react";
 import {SignedIn, SignedOut, SignInButton, UserButton} from "@clerk/nextjs";
 import {Button} from "@/components/ui/button";
+import DarkModeToggle from "@/components/dark-mode-toggle";
 
 export default function Home() {
     const [articles, setArticles] = useState<article[]>([]);
@@ -36,11 +37,14 @@ export default function Home() {
                       <ArticleCard key={article.id} article={article} />
                   ))}
               </div>
-              <div className="fixed bottom-4 right-4">
-                  <UserButton />
-              </div>
-
           </SignedIn>
+
+          <div className="fixed bottom-4 right-4 flex gap-2">
+              <DarkModeToggle />
+              <SignedIn>
+                  <UserButton />
+              </SignedIn>
+          </div>
 
           <SignedOut>
               <div className="flex flex-col items-center justify-center">
