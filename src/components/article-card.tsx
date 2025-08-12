@@ -27,7 +27,9 @@ export function ArticleCard({article}: ArticleCardProps) {
 
             </CardContent>
             <CardFooter className="flex-col gap-2 underline">
-                Go to article
+                <a className="cursor-pointer" href={article.url} target="_blank">
+                    Go to article
+                </a>
             </CardFooter>
         </Card>
     )

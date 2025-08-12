@@ -1,23 +1,28 @@
+"use client"
+
 import { ArticleCard } from "@/components/article-card"
 import {article} from "@/type/article";
+import {useEffect, useState} from "react";
 
 export default function Home() {
-    const articles: article[] = [
-        {
-            id: 1,
-            title: "The History of Chess",
-            description: "An overview of chess from its origins to the modern era.",
-            timestamp: new Date()
-        },
-        {
-            id: 2,
-            title: "Space Exploration",
-            description: "The milestones in humanity’s journey to space.",
-            timestamp: new Date()
-        }
-    ];
+    const [articles, setArticles] = useState<article[]>([]);
 
-  return (
+    useEffect(() => {
+        const loadArticles = async () => {
+            try {
+                const res = await fetch(`/api/article`);
+                const data = await res.json();
+                setArticles(data);
+                console.log(data);
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+        loadArticles();
+    }, [])
+
+    return (
       <div className="flex items-center flex-col w-full">
           <p className="text-3xl md:text-5xl font-bold p-8">
               Welcome to Frank
@@ -30,5 +35,5 @@ export default function Home() {
           </div>
       </div>
 
-  );
+    );
 }
