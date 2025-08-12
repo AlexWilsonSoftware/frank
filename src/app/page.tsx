@@ -3,6 +3,8 @@
 import { ArticleCard } from "@/components/article-card"
 import {article} from "@/type/article";
 import {useEffect, useState} from "react";
+import {SignedIn, SignedOut, SignInButton, UserButton} from "@clerk/nextjs";
+import {Button} from "@/components/ui/button";
 
 export default function Home() {
     const [articles, setArticles] = useState<article[]>([]);
@@ -23,16 +25,32 @@ export default function Home() {
     }, [])
 
     return (
-      <div className="flex items-center flex-col w-full">
+      <div className="flex items-center flex-col w-full h-full">
           <p className="text-3xl md:text-5xl font-bold p-8">
               Welcome to Frank
           </p>
 
-          <div className="w-[90%] md:w-[50%] gap-8 flex flex-col">
-              {articles.map((article: article) => (
-                  <ArticleCard key={article.id} article={article} />
-              ))}
-          </div>
+          <SignedIn>
+              <div className="w-[90%] md:w-[50%] gap-8 flex flex-col">
+                  {articles.map((article: article) => (
+                      <ArticleCard key={article.id} article={article} />
+                  ))}
+              </div>
+              <div className="fixed bottom-4 right-4">
+                  <UserButton />
+              </div>
+
+          </SignedIn>
+
+          <SignedOut>
+              <div className="flex flex-col items-center justify-center">
+                  <p className="text-xl mb-4">You must be signed in to use Frank.</p>
+                  <SignInButton mode="modal">
+                      <Button className="cursor-pointer">Sign In</Button>
+                  </SignInButton>
+              </div>
+          </SignedOut>
+
       </div>
 
     );
