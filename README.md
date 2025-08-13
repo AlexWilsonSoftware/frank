@@ -50,7 +50,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 - [ ] more unique styling
 - [ ] skeletons on dashboard
 - [ ] add weighting to categories
+- [ ] editors choice
 - [ ] email wiki article
-- [ ] delete entry
-- [ ] change genre of wiki article
-- [ ] filter by genre
+- [ ] quiz from yesterdays article
+- [ ] quiz from this week
+- [ ] view more articles
