@@ -6,12 +6,12 @@ type ArticleCardProps = {
     article: article
 }
 
-export function ArticleCard({article}: ArticleCardProps) {
+export function TodaysArticleCard({article}: ArticleCardProps) {
 
     return (
-        <Card className="w-[100%] md:w-[49%] gap-0 pb-2">
+        <Card className="w-full h-[95%]">
             <CardHeader>
-                <CardTitle>{article.title}</CardTitle>
+                <CardTitle className="text-xl">{article.title}</CardTitle>
                 <CardDate>
                     {new Date(article.timestamp).toLocaleDateString("en-GB", {
                         day: "2-digit",
@@ -21,13 +21,15 @@ export function ArticleCard({article}: ArticleCardProps) {
             </CardHeader>
 
             <CardContent>
-                <CardDescription className="max-h-[90%] line-clamp-4 pb-3.5">
+                <CardDescription className="text-base line-clamp-20">
                     {article.description}
                 </CardDescription>
             </CardContent>
-            <CardFooter className="flex gap-2 justify-end pb-2">
-                <Button className="cursor-pointer" variant="outline">
-                    <a href={article.url} target="_blank">Open</a>
+            <CardFooter className="flex-col gap-2 pt-2 items-end h-full justify-end">
+                <Button className="cursor-pointer text-base">
+                    <a href={article.url} target="_blank">
+                        Go to article
+                    </a>
                 </Button>
             </CardFooter>
         </Card>

@@ -4,16 +4,16 @@ import {NextResponse} from "next/server";
 const sql = neon(process.env.POSTGRES_URL!);
 
 export async function GET(req: Request) {
-    const articles = await sql`SELECT * FROM article`
+    const articles = await sql`SELECT * FROM article ORDER BY timestamp DESC`
 
     return NextResponse.json(articles)
 }
 
 export async function POST(req: Request) {
     try {
-        const { user_id, title, description, url, timestamp } = await req.json();
+        const { title, description, url, timestamp } = await req.json();
 
-        if (!user_id || !title || !url || !timestamp) {
+        if (!title || !url || !timestamp) {
             return NextResponse.json(
                 { error: "Missing required fields" },
                 { status: 400 }
@@ -21,8 +21,8 @@ export async function POST(req: Request) {
         }
 
         const result = await sql`
-      INSERT INTO article (user_id, title, description, url, timestamp)
-      VALUES (${user_id}, ${title}, ${description}, ${url}, ${timestamp})
+      INSERT INTO article (title, description, url, timestamp)
+      VALUES (${title}, ${description}, ${url}, ${timestamp})
       RETURNING *
     `;
 

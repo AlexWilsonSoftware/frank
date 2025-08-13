@@ -43,10 +43,14 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 - [x] Attach db to ui
 - [x] Add auth
 - [x] light mode/dark mode
-- [ ] generate wiki article
-- [ ] improve article card
+- [x] generate wiki article
+- [x] improve dashboard
+- [ ] refactor new article methods into api call
+- [ ] add cron job
+- [ ] more unique styling
+- [ ] skeletons on dashboard
+- [ ] add weighting to categories
 - [ ] email wiki article
-- [ ] automate email
 - [ ] delete entry
 - [ ] change genre of wiki article
 - [ ] filter by genre
