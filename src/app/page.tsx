@@ -6,7 +6,6 @@ import {useEffect, useState} from "react";
 import {SignedIn, SignedOut, SignInButton, UserButton} from "@clerk/nextjs";
 import {Button} from "@/components/ui/button";
 import DarkModeToggle from "@/components/dark-mode-toggle";
-import {NewArticleButton} from "@/components/new-article";
 import {TodaysArticleCard} from "@/components/todays-article-card";
 
 export default function Home() {
@@ -36,7 +35,6 @@ export default function Home() {
 
             <SignedIn>
                 <div className="w-[90%] md:w-[90%] lg:w-[80%] gap-8 pb-8 flex flex-col items-center">
-                    <NewArticleButton />
                     <div className="flex flex-col xl:flex-row gap-8 w-full">
 
                         <div className="flex flex-col xl:w-1/3">

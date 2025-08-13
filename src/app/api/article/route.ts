@@ -3,7 +3,7 @@ import {NextResponse} from "next/server";
 
 const sql = neon(process.env.POSTGRES_URL!);
 
-export async function GET(req: Request) {
+export async function GET() {
     const articles = await sql`SELECT * FROM article ORDER BY timestamp DESC`
 
     return NextResponse.json(articles)

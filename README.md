@@ -45,7 +45,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 - [x] light mode/dark mode
 - [x] generate wiki article
 - [x] improve dashboard
-- [ ] refactor new article methods into api call
+- [x] refactor new article methods into api call
 - [ ] add cron job
 - [ ] more unique styling
 - [ ] skeletons on dashboard
