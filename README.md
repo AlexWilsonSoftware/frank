@@ -46,7 +46,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 - [x] generate wiki article
 - [x] improve dashboard
 - [x] refactor new article methods into api call
-- [ ] add cron job
+- [x] add cron job
 - [ ] more unique styling
 - [ ] skeletons on dashboard
 - [ ] add weighting to categories
