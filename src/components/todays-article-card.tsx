@@ -1,6 +1,6 @@
-import {Card, CardContent, CardDate, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
+import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/8bit/card";
 import {article} from "@/type/article";
-import {Button} from "@/components/ui/button";
+import {Button} from "@/components/ui/8bit/button";
 
 type ArticleCardProps = {
     article: article
@@ -9,15 +9,9 @@ type ArticleCardProps = {
 export function TodaysArticleCard({article}: ArticleCardProps) {
 
     return (
-        <Card className="w-full h-[95%]">
+        <Card className="w-full h-full">
             <CardHeader>
                 <CardTitle className="text-xl">{article.title}</CardTitle>
-                <CardDate>
-                    {new Date(article.timestamp).toLocaleDateString("en-GB", {
-                        day: "2-digit",
-                        month: "short",
-                    })}
-                </CardDate>
             </CardHeader>
 
             <CardContent>

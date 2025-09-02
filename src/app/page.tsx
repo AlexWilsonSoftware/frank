@@ -4,9 +4,10 @@ import { ArticleCard } from "@/components/article-card"
 import {article} from "@/type/article";
 import {useEffect, useState} from "react";
 import {SignedIn, SignedOut, SignInButton, UserButton} from "@clerk/nextjs";
-import {Button} from "@/components/ui/button";
+import {Button} from "@/components/ui/8bit/button";
 import DarkModeToggle from "@/components/dark-mode-toggle";
 import {TodaysArticleCard} from "@/components/todays-article-card";
+import Image from "next/image"
 
 export default function Home() {
     const [todaysArticle, setTodaysArticle] = useState<article>();
@@ -29,8 +30,8 @@ export default function Home() {
 
     return (
         <div className="flex flex-col items-center w-full min-h-screen">
-            <p className="text-3xl md:text-5xl font-bold p-8 text-center">
-                Welcome to Frank
+            <p className="text-2xl md:text-5xl font-bold p-8 text-center retro">
+                FRANK
             </p>
 
             <SignedIn>
@@ -38,7 +39,7 @@ export default function Home() {
                     <div className="flex flex-col xl:flex-row gap-8 w-full">
 
                         <div className="flex flex-col xl:w-1/3">
-                            <p className="text-xl md:text-3xl font-semibold py-4">
+                            <p className="text-xl md:text-2xl font-semibold py-4 retro">
                                 Today&#39;s Article
                             </p>
                             {todaysArticle ? (
@@ -48,13 +49,13 @@ export default function Home() {
                             )}
                         </div>
 
-                        <div className="hidden xl:block mt-18 w-px bg-gray-400" />
+                        <div className="hidden xl:block mt-18 w-px relative border-x-3 border-foreground dark:border-ring -mx-1.5" />
 
                         <div className="flex flex-col xl:w-2/3">
-                            <p className="text-xl md:text-3xl font-semibold py-4">
+                            <p className="text-xl md:text-2xl font-semibold py-4 retro">
                                 Past Articles
                             </p>
-                            <div className="flex flex-wrap gap-2">
+                            <div className="flex flex-wrap gap-2 gap-x-5">
                                 {recentArticles.map((article: article) => (
                                     <ArticleCard key={article.id} article={article} />
                                 ))}
@@ -65,16 +66,28 @@ export default function Home() {
                 </div>
             </SignedIn>
 
-            <div className="fixed bottom-4 right-4 flex gap-2">
+            <div className="fixed top-4 right-4 flex gap-2">
                 <DarkModeToggle />
                 <SignedIn>
                     <UserButton />
                 </SignedIn>
             </div>
 
+            <div className="fixed bottom-0 right-0 [&>span]:block [&>span]:leading-none">
+                <Image
+                    src="/frog moving.gif"
+                    alt="Frog sprite"
+                    width={332}
+                    height={228}
+                    unoptimized
+                    className="block [image-rendering:pixelated]"
+                    priority
+                />
+            </div>
+
             <SignedOut>
                 <div className="flex flex-col items-center justify-center">
-                    <p className="text-xl mb-4">You must be signed in to use Frank.</p>
+                    <p className="text-xl mb-4 retro">You must be signed in to use Frank.</p>
                     <SignInButton mode="modal">
                         <Button className="cursor-pointer">Sign In</Button>
                     </SignInButton>
