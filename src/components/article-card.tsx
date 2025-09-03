@@ -1,5 +1,4 @@
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/8bit/card";
-import {Badge} from "@/components/ui/8bit/badge"
 import {article} from "@/type/article";
 import {Button} from "@/components/ui/8bit/button";
 
@@ -10,13 +9,13 @@ type ArticleCardProps = {
 export function ArticleCard({article}: ArticleCardProps) {
 
     return (
-        <Card className="w-[100%] md:w-[49%] gap-0 pb-2">
+        <Card className="w-[100%] md:w-[48%] gap-0 pb-2">
             <CardHeader>
                 <CardTitle className="line-clamp-1 leading-loose">{article.title}</CardTitle>
             </CardHeader>
 
             <CardContent>
-                <CardDescription className="line-clamp-4 pb-5">
+                <CardDescription className="line-clamp-4 pb-5 text-sm">
                     {article.description}
                 </CardDescription>
             </CardContent>

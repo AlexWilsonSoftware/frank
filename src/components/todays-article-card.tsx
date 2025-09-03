@@ -9,7 +9,7 @@ type ArticleCardProps = {
 export function TodaysArticleCard({article}: ArticleCardProps) {
 
     return (
-        <Card className="w-full h-full">
+        <Card className="mr-10 h-full w-full xl:w-auto">
             <CardHeader>
                 <CardTitle className="text-xl">{article.title}</CardTitle>
             </CardHeader>
