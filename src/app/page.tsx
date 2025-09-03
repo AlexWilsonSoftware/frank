@@ -66,6 +66,15 @@ export default function Home() {
                 </div>
             </SignedIn>
 
+            <SignedOut>
+                <div className="flex flex-col items-center justify-center">
+                    <p className="text-xl mb-4 retro">You must be signed in to use Frank.</p>
+                    <SignInButton mode="modal">
+                        <Button className="cursor-pointer">Sign In</Button>
+                    </SignInButton>
+                </div>
+            </SignedOut>
+
             <footer className="mt-auto w-full flex justify-center md:justify-end">
                 <div className="w-[80vw] max-w-[320px] h-auto">
                     <Image
@@ -79,15 +88,6 @@ export default function Home() {
                     />
                 </div>
             </footer>
-
-            <SignedOut>
-                <div className="flex flex-col items-center justify-center">
-                    <p className="text-xl mb-4 retro">You must be signed in to use Frank.</p>
-                    <SignInButton mode="modal">
-                        <Button className="cursor-pointer">Sign In</Button>
-                    </SignInButton>
-                </div>
-            </SignedOut>
         </div>
 
 
