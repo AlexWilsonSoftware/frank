@@ -2,12 +2,13 @@
 
 import { ArticleCard } from "@/components/article-card"
 import {article} from "@/type/article";
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useState} from "react";
 import {SignedIn, SignedOut, SignInButton, UserButton} from "@clerk/nextjs";
 import {Button} from "@/components/ui/8bit/button";
 import DarkModeToggle from "@/components/dark-mode-toggle";
 import {TodaysArticleCard} from "@/components/todays-article-card";
 import Image from "next/image"
+import Navbar from "@/components/navbar";
 
 export default function Home() {
     const [todaysArticle, setTodaysArticle] = useState<article>();
@@ -30,32 +31,7 @@ export default function Home() {
 
     return (
         <div className="flex flex-col min-h-screen w-full items-center">
-            <div className="relative w-[320px] h-[96px]" aria-label="Frank logo">
-                {/* Light-mode logo */}
-                <Image
-                    src="/Frank Logo.gif"
-                    alt=""
-                    width={320}
-                    height={96}
-                    unoptimized
-                    className="hidden [image-rendering:pixelated] dark:block"
-                    priority
-                    aria-hidden
-                />
-                {/* Dark-mode logo */}
-                <Image
-                    src="/Frank Logo Light Mode.gif"
-                    alt=""
-                    width={320}
-                    height={96}
-                    unoptimized
-                    className="block [image-rendering:pixelated] dark:hidden"
-                    priority
-                    aria-hidden
-                />
-            </div>
-
-            <br/>
+            <Navbar />
 
             <SignedIn>
                 <div className="w-[90%] md:w-[90%] gap-8 flex flex-col items-center">
@@ -75,8 +51,6 @@ export default function Home() {
 
                         </div>
 
-                        {/*<div className="hidden xl:block mt-18 w-px relative border-x-3 border-foreground dark:border-ring -mx-1.5" />*/}
-
                         <div className="flex flex-col xl:w-2/3">
                             <p className="text-xl md:text-2xl font-semibold py-4 retro">
                                 Past Articles
@@ -91,13 +65,6 @@ export default function Home() {
                     </div>
                 </div>
             </SignedIn>
-
-            <div className="fixed top-4 right-4 flex gap-2">
-                <DarkModeToggle />
-                <SignedIn>
-                    <UserButton />
-                </SignedIn>
-            </div>
 
             <footer className="mt-auto w-full flex justify-center md:justify-end">
                 <div className="w-[80vw] max-w-[320px] h-auto">

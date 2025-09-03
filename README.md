@@ -48,6 +48,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 - [x] refactor new article methods into api call
 - [x] add cron job
 - [ ] more unique styling
+- [ ] refactor page.tsx into more components
 - [ ] skeletons on dashboard
 - [ ] add weighting to categories
 - [ ] editors choice

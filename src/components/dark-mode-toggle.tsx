@@ -31,7 +31,7 @@ export default function DarkModeToggle() {
     return (
         <button
             onClick={toggle}
-            disabled={isAnimating} // optional: add visual disabled styles
+            disabled={isAnimating}
             className="relative inline-block w-16 h-8 cursor-pointer outline-none focus-visible:ring ring-offset-2 ring-foreground/40"
             style={{
                 backgroundImage: 'url("/toggle.png")',
