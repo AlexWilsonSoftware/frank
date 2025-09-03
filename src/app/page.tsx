@@ -3,9 +3,8 @@
 import { ArticleCard } from "@/components/article-card"
 import {article} from "@/type/article";
 import {useEffect, useState} from "react";
-import {SignedIn, SignedOut, SignInButton, UserButton} from "@clerk/nextjs";
+import {SignedIn, SignedOut, SignInButton} from "@clerk/nextjs";
 import {Button} from "@/components/ui/8bit/button";
-import DarkModeToggle from "@/components/dark-mode-toggle";
 import {TodaysArticleCard} from "@/components/todays-article-card";
 import Image from "next/image"
 import Navbar from "@/components/navbar";
