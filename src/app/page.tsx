@@ -12,6 +12,7 @@ import Navbar from "@/components/navbar";
 export default function Home() {
     const [todaysArticle, setTodaysArticle] = useState<article>();
     const [recentArticles, setRecentArticles] = useState<article[]>([]);
+    const [editorsChoiceArticles, setEditorsChoiceArticles] = useState<article[]>([]);
 
     useEffect(() => {
         const loadArticles = async () => {
@@ -28,13 +29,26 @@ export default function Home() {
         loadArticles();
     }, []);
 
+    useEffect(() => {
+        const loadEditorsArticles = async () => {
+            try {
+                const res = await fetch(`/api/editors-choice`);
+                const data = await res.json();
+                setEditorsChoiceArticles(data.slice(0, 2));
+            } catch (err) {
+                console.log(err);
+            }
+        };
+
+        loadEditorsArticles();
+    }, []);
+
     return (
         <div className="flex flex-col min-h-screen w-full items-center">
             <Navbar />
 
             <SignedIn>
-                <div className="w-[90%] md:w-[90%] gap-8 flex flex-col items-center">
-
+                <div className="w-[90%] md:w-[90%] flex flex-col items-center">
                     <div className="flex flex-col xl:flex-row gap-8 w-full">
                         <div className="flex flex-col xl:w-1/3">
                             <p className="text-xl md:text-2xl font-semibold py-4 retro">
@@ -60,9 +74,19 @@ export default function Home() {
                                 ))}
                             </div>
                         </div>
-
+                    </div>
+                    <div className="flex flex-col w-full">
+                        <p className="text-xl md:text-2xl font-semibold py-4 retro">
+                            Editor&#39;s Choice
+                        </p>
+                        <div className="flex flex-wrap gap-8 gap-x-14 h-full">
+                            {editorsChoiceArticles.map((article: article) => (
+                                <ArticleCard key={article.id} article={article} />
+                            ))}
+                        </div>
                     </div>
                 </div>
+
             </SignedIn>
 
             <SignedOut>

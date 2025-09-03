@@ -11,14 +11,15 @@ export function ArticleCard({article}: ArticleCardProps) {
 
     return (
         <Card className="w-[100%] md:w-[48%] gap-0 pb-2">
-            <div className="absolute right-4 top-1">
+            {article.timestamp && <div className="absolute right-4 top-1">
                 <Badge>
                     {new Date(article.timestamp).toLocaleDateString("en-GB", {
                         day: "2-digit",
                         month: "short",
                     })}
                 </Badge>
-            </div>
+            </div>}
+
             <CardHeader>
                 <CardTitle className="line-clamp-1 leading-loose">{article.title}</CardTitle>
             </CardHeader>
