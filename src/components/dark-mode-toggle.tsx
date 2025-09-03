@@ -1,32 +1,46 @@
-'use client'
+"use client";
 
-import { useEffect, useState } from 'react'
-import { Moon, Sun } from 'lucide-react'
+import { useEffect, useState } from "react";
 
 export default function DarkModeToggle() {
-    const [darkMode, setDarkMode] = useState(false)
+    const [isDark, setIsDark] = useState(false);
+    const [isAnimating, setIsAnimating] = useState(false);
 
-    // Load theme from localStorage
+    const totalFrames = 9;
+    const animationMs = 220;
+
     useEffect(() => {
-        const isDark = localStorage.getItem('theme') === 'dark'
-        setDarkMode(isDark)
-        document.documentElement.classList.toggle('dark', isDark)
-    }, [])
+        const dark = localStorage.getItem("theme") === "dark";
+        setIsDark(dark);
+        document.documentElement.classList.toggle("dark", dark);
+    }, []);
 
-    const toggleTheme = () => {
-        const newMode = !darkMode
-        setDarkMode(newMode)
-        localStorage.setItem('theme', newMode ? 'dark' : 'light')
-        document.documentElement.classList.toggle('dark', newMode)
-    }
+    const toggle = () => {
+        if (isAnimating) return; //ignore spam clicks
+
+        setIsAnimating(true);
+        setIsDark((prev) => {
+            const next = !prev;
+            document.documentElement.classList.toggle("dark", next);
+            localStorage.setItem("theme", next ? "dark" : "light");
+            return next;
+        });
+        setTimeout(() => setIsAnimating(false), animationMs);
+    };
 
     return (
         <button
-            onClick={toggleTheme}
-            className="flex items-center gap-2 p-2 rounded text-gray-800 dark:text-gray-200 hover:bg-sidebar-accent transition cursor-pointer"
-        >
-            {darkMode ? <Sun size={15} /> : <Moon size={15} />}
-        </button>
-    )
-
+            onClick={toggle}
+            disabled={isAnimating} // optional: add visual disabled styles
+            className="relative inline-block w-16 h-8 cursor-pointer outline-none focus-visible:ring ring-offset-2 ring-foreground/40"
+            style={{
+                backgroundImage: 'url("/toggle.png")',
+                backgroundRepeat: "no-repeat",
+                backgroundSize: `${totalFrames * 100}% 100%`,
+                backgroundPosition: isDark ? "100% 0" : "0 0",
+                transition: `background-position ${animationMs}ms steps(${totalFrames - 1})`,
+                imageRendering: "pixelated",
+            }}
+        />
+    );
 }
